@@ -3,10 +3,108 @@ import 'exports.dart';
 
 
 void main() {
-  runApp(const MaterialApp(
-    home: LocationPage(),
+  runApp(MaterialApp(
+    home: Base(),
   ));
 }
+
+
+class Base extends StatefulWidget {
+  
+  Base({super.key});
+
+  @override
+  State<Base> createState() => _BaseState();
+}
+
+class _BaseState extends State<Base> {
+  int currentPageIndex = 0;
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      
+
+
+      body: [
+        LocationPage(),
+        Text("Hello"),
+        Text("Search"),
+        Text("Idk")
+
+      ][_selectedIndex],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            )
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              gap: 8,
+              activeColor: Colors.black,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: Duration(milliseconds: 400),
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Colors.black,
+              tabs: [
+                GButton(
+                  icon: LineIcons.map,
+                  text: 'Current',
+                ),
+                GButton(
+                  icon: LineIcons.heart,
+                  text: 'Injury Hub',
+                ),
+                GButton(
+                  icon: LineIcons.search,
+                  text: 'Profile',
+                ),
+                GButton(
+                  icon: LineIcons.search,
+                  text: 'Profile',
+                ),
+
+
+              ],
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
