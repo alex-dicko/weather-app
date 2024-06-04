@@ -176,15 +176,13 @@ class _LocationPageState extends State<LocationPage> {
     if (loaded == true)
     {
       return Scaffold(
-        appBar: AppBar(title: const Text("Location Page")),
         body: SafeArea(
-          child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('LAT: ${lat ?? 'Permissions Issue'}'),
-                  Text('LON: ${lon ?? 'Permissions Issue'}'),
-                  Text('NAME: ${loca.location_name ?? 'Permissions Issue'}'),
+                  Center(child: Text('${loca.location_name}', style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),)),
+                  Text('${loca.current_temp_c}', style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 70, fontWeight: FontWeight.bold)),),
+                  
                   // Text('LAT: ${_currentPosition?.latitude ?? ""}'),
                   // Text('LNG: ${_currentPosition?.longitude ?? ""}'),
                   // Text('ADDRESS: ${_currentAddress ?? ""}'),
@@ -192,7 +190,7 @@ class _LocationPageState extends State<LocationPage> {
                   
                 ],
               ),
-          ),
+          
         ),
       );
     }
